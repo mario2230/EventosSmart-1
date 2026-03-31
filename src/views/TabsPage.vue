@@ -13,9 +13,9 @@
           <ion-label>Eventos</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="Page3" href="/tabs/tab3">
+        <ion-tab-button tab="Page3" href="/tabs/perfil">
           <ion-icon aria-hidden="true" :icon="square" />
-          <ion-label>Tab 3</ion-label>
+          <ion-label>Perfil</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
