@@ -1,4 +1,4 @@
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 
 
 
@@ -9,8 +9,11 @@ interface Evento {
     estado: boolean
 }
 
+
+
+const eventos = ref<Evento[]>([])
+
 export function useEventos() {
-    const eventos = ref<Evento[]>([])
     const busca = ref('')
     const filtroAtivo = ref<'estado' | 'favorito' | 'indiferente'>('estado')
 
@@ -26,8 +29,15 @@ export function useEventos() {
     })
 })
 
+
+
+
 const totalFavoritas = computed(
     () => eventos.value.filter(e => e.estado).length
+)
+
+const favoritos = computed(
+  () => eventos.value.filter(e => e.estado)
 )
 
 function adicionar(texto:string) {
@@ -50,12 +60,8 @@ function remover(id: number) {
 
 
 
-watch(totalFavoritas, (novoValor, antigoValor) => {
-    if(novoValor != antigoValor && novoValor > antigoValor) {
-        alert('Tarefa Favoritada!')
-    }
-})
 
-return { eventos, busca, filtroAtivo, filtradas, totalFavoritas, adicionar, remover, favoritar}
+
+return { eventos, busca, filtroAtivo, filtradas, totalFavoritas, adicionar, remover, favoritar, favoritos}
 
 }

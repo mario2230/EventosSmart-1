@@ -59,13 +59,13 @@ import {
     IonInput, IonButton, IonIcon
 } from '@ionic/vue';
 
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 
 import { useEventos } from '@/composable/useEventos';
 import CardEvento from '@/components/CardEvento.vue';
 
-const { filtradas, adicionar, remover, favoritar } = useEventos()
+const { filtradas, adicionar, remover, favoritar, totalFavoritas } = useEventos()
 const novoEvento = ref('')
 
 import { addOutline } from 'ionicons/icons'
@@ -76,5 +76,11 @@ function adicionarNovo() {
     novoEvento.value = ''
 }
 
+
+watch(totalFavoritas, (novoValor, antigoValor) => {
+    if(novoValor != antigoValor && novoValor > antigoValor) {
+        alert('Tarefa Favoritada!')
+    } 
+})
 
 </script>

@@ -13,10 +13,17 @@
           <ion-label>Eventos</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="Page3" href="/tabs/perfil">
+        <ion-tab-button tab="Page3" href="/tabs/favoritos">
+          <ion-icon aria-hidden="true" :icon="heart" />
+          <ion-label>Favoritos</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="Page4" href="/tabs/perfil">
           <ion-icon aria-hidden="true" :icon="square" />
           <ion-label>Perfil</ion-label>
         </ion-tab-button>
+
+      
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
@@ -24,5 +31,5 @@
 
 <script setup lang="ts">
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { ellipse, square, triangle } from 'ionicons/icons';
+import { ellipse, square, triangle, heart} from 'ionicons/icons';
 </script>
