@@ -23,6 +23,8 @@
           <ion-label>Perfil</ion-label>
         </ion-tab-button>
 
+
+
       
       </ion-tab-bar>
     </ion-tabs>

@@ -56,12 +56,14 @@ function remover(id: number) {
 }
 
 
+function buscarPorId(id: number) {
+  return computed(() => eventos.value.find(e => e.id === id))
+}
 
 
 
 
 
-
-return { eventos, busca, filtroAtivo, filtradas, totalFavoritas, adicionar, remover, favoritar, favoritos}
+return { eventos, busca, filtroAtivo, filtradas, totalFavoritas, adicionar, remover, favoritar, favoritos, buscarPorId}
 
 }

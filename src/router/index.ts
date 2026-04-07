@@ -1,43 +1,47 @@
-import { createRouter, createWebHistory } from '@ionic/vue-router';
-import { RouteRecordRaw } from 'vue-router';
-import TabsPage from '../views/TabsPage.vue'
+import { createRouter, createWebHistory } from "@ionic/vue-router";
+import { RouteRecordRaw } from "vue-router";
+import TabsPage from "../views/TabsPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    redirect: '/tabs/home' 
+    path: "/",
+    redirect: "/tabs/home",
   },
   {
-    path: '/tabs/',
+    path: "/eventos/:id",
+    component: () => import("@/views/EventoDetalhePage.vue"),
+  },
+  {
+    path: "/tabs/",
     component: TabsPage,
     children: [
       {
-        path: '',
-        redirect: '/tabs/home' 
+        path: "",
+        redirect: "/tabs/home",
       },
       {
-        path: 'home',
-        component: () => import('@/views/HomePage.vue')
+        path: "home",
+        component: () => import("@/views/HomePage.vue"),
       },
       {
-        path: 'eventos',
-        component: () => import('@/views/EventosPage.vue')
+        path: "eventos",
+        component: () => import("@/views/EventosPage.vue"),
       },
       {
-        path: 'favoritos',
-        component: () => import('@/views/FavoritosPage.vue')
+        path: "favoritos",
+        component: () => import("@/views/FavoritosPage.vue"),
       },
       {
-        path: 'perfil',
-        component: () => import('@/views/PerfilPage.vue')
-      }
-    ]
-  }
-]
+        path: "perfil",
+        component: () => import("@/views/PerfilPage.vue"),
+      },
+    ],
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

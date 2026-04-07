@@ -36,7 +36,8 @@
                             <ion-card-content>
                                 <CardEvento v-for="evento in filtradas" :key="evento.id" :evento="evento"
                                     @favoritar="favoritar"
-                                    @remover="remover" />
+                                    @remover="remover" 
+                                    @ver-detalhe="irParaDetalhe" />
 
                                 <p v-if="filtradas.length === 0" class="ion-text-center ion-padding">
                                     Nenhuma tarefa cadastrada.
@@ -60,7 +61,7 @@ import {
 } from '@ionic/vue';
 
 import { ref, watch } from 'vue'
-
+import { useRouter } from 'vue-router'
 
 import { useEventos } from '@/composable/useEventos';
 import CardEvento from '@/components/CardEvento.vue';
@@ -82,5 +83,12 @@ watch(totalFavoritas, (novoValor, antigoValor) => {
         alert('Tarefa Favoritada!')
     } 
 })
+
+const router = useRouter()
+
+function irParaDetalhe(id: number) {
+  router.push(`/eventos/${id}`)
+}
+
 
 </script>

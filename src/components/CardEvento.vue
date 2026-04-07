@@ -10,7 +10,6 @@ import {
 
 import { heart, heartOutline, trashOutline } from 'ionicons/icons'
 
-
 interface Evento { 
   id: number; 
   texto: string; 
@@ -19,37 +18,46 @@ interface Evento {
 
 const props = defineProps<{ evento: Evento }>()
 
-
 const emit = defineEmits<{
   remover: [id: number]
   favoritar: [id: number]
-}>() 
+  'ver-detalhe': [id: number] 
+}>()
 </script>
 
 <template>
   <IonCard>
     <IonCardContent class="ion-no-padding">
-      <IonItem lines="none">
+      <IonItem 
+        lines="none"
+        button
+        @click="emit('ver-detalhe', props.evento.id)"  
+      >
+        
+       
         <IonIcon 
           slot="start" 
           :icon="props.evento.estado ? heart : heartOutline"
           :color="props.evento.estado ? 'danger' : 'medium'" 
-          @click="emit('favoritar', props.evento.id)" 
+          @click.stop="emit('favoritar', props.evento.id)" 
           style="cursor: pointer;"
         />
 
+    
         <IonLabel>
           {{ props.evento.texto }}
         </IonLabel>
 
+   
         <IonButton 
           slot="end" 
           fill="clear" 
           color="medium" 
-          @click="emit('remover', props.evento.id)"
+          @click.stop="emit('remover', props.evento.id)"
         >
           <IonIcon :icon="trashOutline" />
         </IonButton>
+
       </IonItem>
     </IonCardContent>
   </IonCard>
